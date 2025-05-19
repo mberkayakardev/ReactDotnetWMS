@@ -8,9 +8,9 @@
 <br />
 
 <div align="center">
-  <h3 align="center">E-Commerce React + .Net</h3>
+  <h3 align="center">Akar WMS React + .Net</h3>
   <br>
-  <h3> <a href=""> Akar E Ticaret</a> </h3> 
+  <h3> <a href=""> Akar WMS </a> </h3> 
 </div>
 
 
@@ -41,7 +41,7 @@
 
 
 
-* Ön yüz olarak MVC ve VUE (şimdilik sadece mvc ) kullanılarak bir front end simüle edilmiş olup arka planda .net Core Web apiden beslenen sınav veya anketlerin oluşturulduğu, anketlerin kullanıcılara atandığı ve onaycı mekanizması ile üst onaycılara sınavların onaylatıldığı bir proje yazıldı.  
+* Ön yüz olarak React kullanıldı. Arka planda asp.net core Web api 9.0 kullanılarak temel bir WMS projesi oluşturudlu. 
 
 <p align="right">(<a href="#readme-top">başa dön</a>)</p>
 
@@ -64,6 +64,8 @@
 
 * AutoMapper
 
+* İn-memory Cache
+
 * Fluent Api
 
 * Fluent Validaton
@@ -72,24 +74,29 @@
 
 * Bootstrap
 
+* Material UI
+
 * HTML
 
 * CSS
 
 * JS
 
-* React 18
+* React
 
 * Vite
 
-* HttpClient
+* React Router
 
 * İnterseptors
 
-* Axios
+* Axios 
 
-* MAterialUI
+* Redux Toolkit
 
+* React Hook Form
+
+* JWT Decode
 
 
 
