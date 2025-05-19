@@ -5,7 +5,7 @@ using System.Reflection.Emit;
 
 namespace Repositories.EntityFramework.Concrete.EntityConfigurations.AppEntities
 {
-    public class AppMVCMenusConfigurations : IEntityTypeConfiguration<AppMVCMenus>
+    public class AppReactMenusConfigurations : IEntityTypeConfiguration<AppMVCMenus>
     {
         public void Configure(EntityTypeBuilder<AppMVCMenus> builder)
         {

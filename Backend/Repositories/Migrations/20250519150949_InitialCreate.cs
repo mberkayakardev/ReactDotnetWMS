@@ -109,10 +109,6 @@ namespace Repositories.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProductDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProductDescriptionForTextEdit = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Stock = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -320,39 +316,56 @@ namespace Repositories.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "AppReactMenus",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    RootId = table.Column<int>(type: "int", nullable: true),
+                    MenuOrderNumber = table.Column<int>(type: "int", nullable: false),
+                    MenuTextName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MenuTo = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppReactMenus", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AppReactMenus_AppMenus_Id",
+                        column: x => x.Id,
+                        principalTable: "AppMenus",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AppReactMenus_AppReactMenus_RootId",
+                        column: x => x.RootId,
+                        principalTable: "AppReactMenus",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.InsertData(
                 table: "AppApplicationType",
                 columns: new[] { "Id", "ApplicationDescription", "ApplicationName", "CreatedDate", "CreatedUserId", "CreatedUserName", "IsActive", "ModifiedDate", "ModifiedUserId", "ModifiedUserName" },
                 values: new object[,]
                 {
-                    { 1, "MVC", "MVC", new DateTime(2025, 4, 26, 13, 46, 56, 179, DateTimeKind.Utc).AddTicks(6294), null, "SeedData", true, new DateTime(2025, 4, 26, 13, 46, 56, 179, DateTimeKind.Utc).AddTicks(6577), null, "SeedData" },
-                    { 2, "React", "React", new DateTime(2025, 4, 26, 13, 46, 56, 179, DateTimeKind.Utc).AddTicks(7467), null, "SeedData", true, new DateTime(2025, 4, 26, 13, 46, 56, 179, DateTimeKind.Utc).AddTicks(7467), null, "SeedData" }
+                    { 1, "MVC", "MVC", new DateTime(2025, 5, 19, 15, 9, 46, 704, DateTimeKind.Utc).AddTicks(8416), null, "SeedData", true, new DateTime(2025, 5, 19, 15, 9, 46, 704, DateTimeKind.Utc).AddTicks(8711), null, "SeedData" },
+                    { 2, "React", "React", new DateTime(2025, 5, 19, 15, 9, 46, 704, DateTimeKind.Utc).AddTicks(9597), null, "SeedData", true, new DateTime(2025, 5, 19, 15, 9, 46, 704, DateTimeKind.Utc).AddTicks(9598), null, "SeedData" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AppClaims",
                 columns: new[] { "Id", "ClaimDescription", "ClaimName", "CreatedDate", "CreatedUserId", "CreatedUserName", "IsActive", "ModifiedDate", "ModifiedUserId", "ModifiedUserName" },
-                values: new object[] { 1, "Admin Layout içerisindeki Dashboard ın görülebilmesi için eklenmiş olan bir cliam dir.", "Admin.Dashboard", new DateTime(2025, 4, 26, 13, 46, 56, 180, DateTimeKind.Utc).AddTicks(3884), null, "SeedData", true, new DateTime(2025, 4, 26, 13, 46, 56, 180, DateTimeKind.Utc).AddTicks(3886), null, "SeedData" });
+                values: new object[] { 1, "Admin Layout içerisindeki Dashboard ın görülebilmesi için eklenmiş olan bir cliam dir.", "Admin.Dashboard", new DateTime(2025, 5, 19, 15, 9, 46, 705, DateTimeKind.Utc).AddTicks(6642), null, "SeedData", true, new DateTime(2025, 5, 19, 15, 9, 46, 705, DateTimeKind.Utc).AddTicks(6646), null, "SeedData" });
 
             migrationBuilder.InsertData(
                 table: "AppRoles",
                 columns: new[] { "Id", "CreatedDate", "CreatedUserId", "CreatedUserName", "IsActive", "ModifiedDate", "ModifiedUserId", "ModifiedUserName", "RoleDescription", "RoleName" },
-                values: new object[] { 1, new DateTime(2025, 4, 26, 16, 46, 56, 181, DateTimeKind.Local).AddTicks(579), null, "Seed Data", true, new DateTime(2025, 4, 26, 16, 46, 56, 181, DateTimeKind.Local).AddTicks(8567), null, null, "En yetkili kullanıcı", "Sistem Admin" });
+                values: new object[] { 1, new DateTime(2025, 5, 19, 18, 9, 46, 706, DateTimeKind.Local).AddTicks(3403), null, "Seed Data", true, new DateTime(2025, 5, 19, 18, 9, 46, 719, DateTimeKind.Local).AddTicks(3449), null, null, "En yetkili kullanıcı", "Sistem Admin" });
 
             migrationBuilder.InsertData(
                 table: "AppUsers",
                 columns: new[] { "Id", "CreatedDate", "CreatedUserId", "CreatedUserName", "EmailConfirmed", "FalseEntryCount", "IsActive", "IsBlocked", "ModifiedDate", "ModifiedUserId", "ModifiedUserName", "UserEmail", "UserFullName", "UserName", "UserPassword" },
-                values: new object[] { 1, new DateTime(2025, 4, 26, 16, 46, 56, 182, DateTimeKind.Local).AddTicks(3420), null, "Seed Data", true, 0, true, false, new DateTime(2025, 4, 26, 16, 46, 56, 182, DateTimeKind.Local).AddTicks(3424), null, "Seed Data", "berkayakar@gmail.com", "Berkay AKAR", "berkayakar", "A665A45920422F9D417E4867EFDC4FB8A04A1F3FFF1FA07E998E86F7F7A27AE3" });
-
-            migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "Id", "CreatedDate", "CreatedUserId", "CreatedUserName", "IsActive", "ModifiedDate", "ModifiedUserId", "ModifiedUserName", "ProductDescription", "ProductDescriptionForTextEdit", "ProductName", "ProductPrice", "Stock" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2025, 4, 26, 16, 46, 56, 192, DateTimeKind.Local).AddTicks(9737), null, "SeedData", true, new DateTime(2025, 4, 26, 16, 46, 56, 192, DateTimeKind.Local).AddTicks(9741), null, "SeedData", "Telefon", "Telefon", "Telefon", 15000m, 20 },
-                    { 2, new DateTime(2025, 4, 26, 16, 46, 56, 193, DateTimeKind.Local).AddTicks(480), null, "SeedData", true, new DateTime(2025, 4, 26, 16, 46, 56, 193, DateTimeKind.Local).AddTicks(481), null, "SeedData", "Tablet", "Tablet", "Tablet", 15000m, 20 },
-                    { 3, new DateTime(2025, 4, 26, 16, 46, 56, 193, DateTimeKind.Local).AddTicks(484), null, "SeedData", true, new DateTime(2025, 4, 26, 16, 46, 56, 193, DateTimeKind.Local).AddTicks(484), null, "SeedData", "Masaüstü PC", "Masaüstü PC", "Masaüstü PC", 15000m, 20 }
-                });
+                values: new object[] { 1, new DateTime(2025, 5, 19, 18, 9, 46, 720, DateTimeKind.Local).AddTicks(1127), null, "Seed Data", true, 0, true, false, new DateTime(2025, 5, 19, 18, 9, 46, 720, DateTimeKind.Local).AddTicks(1131), null, "Seed Data", "berkayakar@gmail.com", "Berkay AKAR", "berkayakar", "A665A45920422F9D417E4867EFDC4FB8A04A1F3FFF1FA07E998E86F7F7A27AE3" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppMenus_AppApplicationTypeId",
@@ -367,6 +380,11 @@ namespace Repositories.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_AppMVCMenus_RootId",
                 table: "AppMVCMenus",
+                column: "RootId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppReactMenus_RootId",
+                table: "AppReactMenus",
                 column: "RootId");
 
             migrationBuilder.CreateIndex(
@@ -411,6 +429,9 @@ namespace Repositories.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AppMVCMenus");
+
+            migrationBuilder.DropTable(
+                name: "AppReactMenus");
 
             migrationBuilder.DropTable(
                 name: "AppRoleClaims");

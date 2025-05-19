@@ -12,7 +12,7 @@ using QuizApp.Repositories.EntityFramework.Concrete.Contexts;
 namespace Repositories.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250426134656_InitialCreate")]
+    [Migration("20250519150949_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -87,13 +87,13 @@ namespace Repositories.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 4, 26, 16, 46, 56, 182, DateTimeKind.Local).AddTicks(3420),
+                            CreatedDate = new DateTime(2025, 5, 19, 18, 9, 46, 720, DateTimeKind.Local).AddTicks(1127),
                             CreatedUserName = "Seed Data",
                             EmailConfirmed = true,
                             FalseEntryCount = 0,
                             IsActive = true,
                             IsBlocked = false,
-                            ModifiedDate = new DateTime(2025, 4, 26, 16, 46, 56, 182, DateTimeKind.Local).AddTicks(3424),
+                            ModifiedDate = new DateTime(2025, 5, 19, 18, 9, 46, 720, DateTimeKind.Local).AddTicks(1131),
                             ModifiedUserName = "Seed Data",
                             UserEmail = "berkayakar@gmail.com",
                             UserFullName = "Berkay AKAR",
@@ -149,10 +149,10 @@ namespace Repositories.Migrations
                             Id = 1,
                             ApplicationDescription = "MVC",
                             ApplicationName = "MVC",
-                            CreatedDate = new DateTime(2025, 4, 26, 13, 46, 56, 179, DateTimeKind.Utc).AddTicks(6294),
+                            CreatedDate = new DateTime(2025, 5, 19, 15, 9, 46, 704, DateTimeKind.Utc).AddTicks(8416),
                             CreatedUserName = "SeedData",
                             IsActive = true,
-                            ModifiedDate = new DateTime(2025, 4, 26, 13, 46, 56, 179, DateTimeKind.Utc).AddTicks(6577),
+                            ModifiedDate = new DateTime(2025, 5, 19, 15, 9, 46, 704, DateTimeKind.Utc).AddTicks(8711),
                             ModifiedUserName = "SeedData"
                         },
                         new
@@ -160,10 +160,10 @@ namespace Repositories.Migrations
                             Id = 2,
                             ApplicationDescription = "React",
                             ApplicationName = "React",
-                            CreatedDate = new DateTime(2025, 4, 26, 13, 46, 56, 179, DateTimeKind.Utc).AddTicks(7467),
+                            CreatedDate = new DateTime(2025, 5, 19, 15, 9, 46, 704, DateTimeKind.Utc).AddTicks(9597),
                             CreatedUserName = "SeedData",
                             IsActive = true,
-                            ModifiedDate = new DateTime(2025, 4, 26, 13, 46, 56, 179, DateTimeKind.Utc).AddTicks(7467),
+                            ModifiedDate = new DateTime(2025, 5, 19, 15, 9, 46, 704, DateTimeKind.Utc).AddTicks(9598),
                             ModifiedUserName = "SeedData"
                         });
                 });
@@ -267,10 +267,10 @@ namespace Repositories.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 4, 26, 16, 46, 56, 181, DateTimeKind.Local).AddTicks(579),
+                            CreatedDate = new DateTime(2025, 5, 19, 18, 9, 46, 706, DateTimeKind.Local).AddTicks(3403),
                             CreatedUserName = "Seed Data",
                             IsActive = true,
-                            ModifiedDate = new DateTime(2025, 4, 26, 16, 46, 56, 181, DateTimeKind.Local).AddTicks(8567),
+                            ModifiedDate = new DateTime(2025, 5, 19, 18, 9, 46, 719, DateTimeKind.Local).AddTicks(3449),
                             RoleDescription = "En yetkili kullanıcı",
                             RoleName = "Sistem Admin"
                         });
@@ -411,10 +411,10 @@ namespace Repositories.Migrations
                             Id = 1,
                             ClaimDescription = "Admin Layout içerisindeki Dashboard ın görülebilmesi için eklenmiş olan bir cliam dir.",
                             ClaimName = "Admin.Dashboard",
-                            CreatedDate = new DateTime(2025, 4, 26, 13, 46, 56, 180, DateTimeKind.Utc).AddTicks(3884),
+                            CreatedDate = new DateTime(2025, 5, 19, 15, 9, 46, 705, DateTimeKind.Utc).AddTicks(6642),
                             CreatedUserName = "SeedData",
                             IsActive = true,
-                            ModifiedDate = new DateTime(2025, 4, 26, 13, 46, 56, 180, DateTimeKind.Utc).AddTicks(3886),
+                            ModifiedDate = new DateTime(2025, 5, 19, 15, 9, 46, 705, DateTimeKind.Utc).AddTicks(6646),
                             ModifiedUserName = "SeedData"
                         });
                 });
@@ -542,71 +542,13 @@ namespace Repositories.Migrations
                     b.Property<string>("ModifiedUserName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProductDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProductDescriptionForTextEdit")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("ProductPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Stock")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedDate = new DateTime(2025, 4, 26, 16, 46, 56, 192, DateTimeKind.Local).AddTicks(9737),
-                            CreatedUserName = "SeedData",
-                            IsActive = true,
-                            ModifiedDate = new DateTime(2025, 4, 26, 16, 46, 56, 192, DateTimeKind.Local).AddTicks(9741),
-                            ModifiedUserName = "SeedData",
-                            ProductDescription = "Telefon",
-                            ProductDescriptionForTextEdit = "Telefon",
-                            ProductName = "Telefon",
-                            ProductPrice = 15000m,
-                            Stock = 20
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedDate = new DateTime(2025, 4, 26, 16, 46, 56, 193, DateTimeKind.Local).AddTicks(480),
-                            CreatedUserName = "SeedData",
-                            IsActive = true,
-                            ModifiedDate = new DateTime(2025, 4, 26, 16, 46, 56, 193, DateTimeKind.Local).AddTicks(481),
-                            ModifiedUserName = "SeedData",
-                            ProductDescription = "Tablet",
-                            ProductDescriptionForTextEdit = "Tablet",
-                            ProductName = "Tablet",
-                            ProductPrice = 15000m,
-                            Stock = 20
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedDate = new DateTime(2025, 4, 26, 16, 46, 56, 193, DateTimeKind.Local).AddTicks(484),
-                            CreatedUserName = "SeedData",
-                            IsActive = true,
-                            ModifiedDate = new DateTime(2025, 4, 26, 16, 46, 56, 193, DateTimeKind.Local).AddTicks(484),
-                            ModifiedUserName = "SeedData",
-                            ProductDescription = "Masaüstü PC",
-                            ProductDescriptionForTextEdit = "Masaüstü PC",
-                            ProductName = "Masaüstü PC",
-                            ProductPrice = 15000m,
-                            Stock = 20
-                        });
                 });
 
             modelBuilder.Entity("Core.Entities.Concrete.AppEntities.AppMVCMenus", b =>
@@ -645,6 +587,29 @@ namespace Repositories.Migrations
                     b.HasIndex("RootId");
 
                     b.ToTable("AppMVCMenus", (string)null);
+                });
+
+            modelBuilder.Entity("Core.Entities.Concrete.AppEntities.AppReactMenus", b =>
+                {
+                    b.HasBaseType("Core.Entities.Concrete.AppEntities.AppMenus");
+
+                    b.Property<int>("MenuOrderNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MenuTextName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MenuTo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RootId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("RootId");
+
+                    b.ToTable("AppReactMenus", (string)null);
                 });
 
             modelBuilder.Entity("Core.Entities.Concrete.AppEntities.AppMenus", b =>
@@ -750,6 +715,22 @@ namespace Repositories.Migrations
                     b.Navigation("ParentMenu");
                 });
 
+            modelBuilder.Entity("Core.Entities.Concrete.AppEntities.AppReactMenus", b =>
+                {
+                    b.HasOne("Core.Entities.Concrete.AppEntities.AppMenus", null)
+                        .WithOne()
+                        .HasForeignKey("Core.Entities.Concrete.AppEntities.AppReactMenus", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Entities.Concrete.AppEntities.AppReactMenus", "ParentMenu")
+                        .WithMany("ChildMenus")
+                        .HasForeignKey("RootId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("ParentMenu");
+                });
+
             modelBuilder.Entity("ApiService.Entities.Concrete.AppEntities.AppUser", b =>
                 {
                     b.Navigation("AppUserClaims");
@@ -782,6 +763,11 @@ namespace Repositories.Migrations
                 });
 
             modelBuilder.Entity("Core.Entities.Concrete.AppEntities.AppMVCMenus", b =>
+                {
+                    b.Navigation("ChildMenus");
+                });
+
+            modelBuilder.Entity("Core.Entities.Concrete.AppEntities.AppReactMenus", b =>
                 {
                     b.Navigation("ChildMenus");
                 });

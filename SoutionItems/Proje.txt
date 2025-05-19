@@ -1,0 +1,88 @@
+* vite ile birlikte proje create etmek için 
+
+    "npm create vite@latest" komutu ile proje create edebilirsin
+
+* bir proje oluşturulduktan sonra dependencyleri indirmek için gidip aşağıdaki kodu yazman gerekecek
+
+    "npm i "
+
+* sonrasında projeyi ayağa kaldırabilirsin. 
+
+* Proje ayağa kalktıktan sonra ise "vite.config.ts" dosyası içerisinde ayağa kalkan projeyi sabit bir porttan kaldırmak istiyorsanız bunun ayarlamalarını gerçekleştirebilirsiniz. 
+
+    import { defineConfig } from 'vite'
+    import react from '@vitejs/plugin-react'
+
+    export default defineConfig({
+        // proje ayağa kalkacak port bilgisi ayarlandı. 
+        server:{
+            port: 3000
+        },
+        plugins: [react()],
+    })
+
+* react projesin bootstrap kurmak oldukça kolay aşağıdaki npm komutu ile react projene bootstrap kurabilirsin.  
+
+    "npm install bootstrap"
+
+* bootstrapta yer alacak olan modal dropdown gibi özellikler için popperjs de kur 
+
+    "npm install @popperjs/core"
+
+* bootstrap kodlarını aşağıdaki gibi çağır. 
+
+    export default function App() {
+        return (
+                <div className="container mt-5">
+                <h1 className="text-primary">Merhaba React + Bootstrap</h1>
+                <button className="btn btn-success">Tıkla</button>
+            </div>
+        )
+    }
+
+
+* bu aşamadan sonra react Router i de projemize import edelim bu bizlere routing mekanizması sağlayacaktır. 
+
+    "npm i react-router"
+
+* routing yapımız sonrasında bizlere MAterialUI lazım Bootstrap ve MAterialUI ile projemizi geliştireceğiz. 
+
+    "npm install @mui/material @emotion/react @emotion/styled"
+
+* Beraberinde yazı fontlarınıda alabilmek için fontları da dahil edelim. 
+
+    "npm install @fontsource/roboto"
+
+    sonra index.css e gidip şu kodları yapıştırın 
+
+    @import '@fontsource/roboto/300.css';
+    @import '@fontsource/roboto/400.css';
+    @import '@fontsource/roboto/500.css';
+    @import '@fontsource/roboto/700.css';
+
+* icon paketleri için aşağıdaki kütüphaneyi de indirin
+
+    "npm install @mui/icons-material"
+
+* router ve material ui indirildikten sonra projeye eklenmesi gereken şey global state yönetimi. bu durumda bizler bu proje için REact Redux Tool Kit kurduk. 
+
+    "npm install @reduxjs/toolkit react-redux"
+
+* React Hook form ları indiriyoruz 
+
+    "npm i react-hook-form"
+
+* React Toastify i indirelim 
+
+    "npm i react-toastify"
+
+* public ve src ile aynı hizzaya bi .env uzantılı dosya eklemeyi unutma 
+
+    .env
+
+* Axios indirelim
+
+    "npm i axios"
+
+* şimdi sırada React Redux Tools u indirelim ve projemize ekleyelim. 
+
