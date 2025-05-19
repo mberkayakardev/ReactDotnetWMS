@@ -32,10 +32,12 @@
 
 <!-- ABOUT THE PROJECT -->
 <h2 id="Proje-Hakkinda"> Proje Hakkında </h2>
-<!-- 
-<img src ="https://raw.githubusercontent.com/mberkayakardev/QueryFlowApp/refs/heads/master/CoreMVC/Resimler/1.png" >
-<img src ="https://raw.githubusercontent.com/mberkayakardev/QueryFlowApp/refs/heads/master/CoreMVC/Resimler/2.png" >
-<img src ="https://raw.githubusercontent.com/mberkayakardev/QueryFlowApp/refs/heads/master/CoreMVC/Resimler/3.png" > -->
+
+<img src="https://raw.githubusercontent.com/mberkayakardev/ReactDotnetWMS/refs/heads/master/Images/1.png" >
+<img src="https://raw.githubusercontent.com/mberkayakardev/ReactDotnetWMS/refs/heads/master/Images/2.png" >
+<img src="https://raw.githubusercontent.com/mberkayakardev/ReactDotnetWMS/refs/heads/master/Images/3.png" >
+<img src="https://raw.githubusercontent.com/mberkayakardev/ReactDotnetWMS/refs/heads/master/Images/4.png" >
+
 
  
 
