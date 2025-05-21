@@ -10,6 +10,7 @@ import HistoryPage from "../Pages/Landing/HistoryPage";
 import LoginPage from "../Pages/Application/LoginPage/LoginPage";
 import RequireAuth from "./RequireAuth";
 import DashboardPage from "../Pages/Application/Dashboard/DashboardPage";
+import UserPages from "../Pages/Application/UserPages/UserPages";
 
 
 
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
           {
             path: "dashboard", // yani /dashboard
             element: <DashboardPage />,
+          },
+             {
+            path: "users", // yani /dashboard
+            element: <UserPages />,
           },
         ],
       },

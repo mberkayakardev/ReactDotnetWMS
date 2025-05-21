@@ -84,5 +84,11 @@
 
     "npm i axios"
 
-* şimdi sırada React Redux Tools u indirelim ve projemize ekleyelim. 
+* jwt işlemleri için jwt-decode indiriyorum 
+
+     "npm i jwt-decode"
+
+* sayfa yenilenmelerinde state i kaybetmemek için ya localstorage içerisinden iş yapacaksın yada redux-persist i kullanacaksın
+
+      "npm i redux- persist"
 

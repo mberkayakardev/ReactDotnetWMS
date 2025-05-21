@@ -1,13 +1,35 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux';
 import authReducer from '../Pages/Application/LoginPage/AuthSlice';
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // localStorage
+
+/// f5 te state ler gitmesin
+const rootReducer = combineReducers({
+  auth: authReducer,
+});
+
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+};
+
+const persistedReducer = persistReducer(authPersistConfig, rootReducer);
+/// f5 te state ler gitmesin
 
 
 export const store = configureStore({
   reducer: {
-        auth: authReducer,
+    /// f5 te state kaybetmemek için 
+    // auth: authReducer,
+    auth: persistReducer(authPersistConfig, authReducer), // sadece bu persist edilecek
+
   },
 })
+
+
+//// sayfa yenilendiğinde state ler kaybolmasın diye
+export const persistor = persistStore(store);
 
 
 export type RootState = ReturnType<typeof store.getState>

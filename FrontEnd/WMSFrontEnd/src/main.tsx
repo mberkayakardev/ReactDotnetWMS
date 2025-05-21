@@ -6,13 +6,18 @@ import { RouterProvider } from 'react-router'
 import { router } from './Routers/AppRouter.tsx'
 import { ToastContainer } from 'react-toastify'
 import { Provider } from 'react-redux'
-import { store } from './Stores/store.ts'
+import { persistor, store } from './Stores/store.ts'
+import { PersistGate } from 'redux-persist/integration/react'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <ToastContainer position='bottom-right' theme='colored'/>
+      <PersistGate loading={null} persistor={persistor}>
+      
+        <ToastContainer position='bottom-right' theme='colored'/>
         <RouterProvider router={router} />
+        
+      </PersistGate>
     </Provider>
   </StrictMode>,
 )

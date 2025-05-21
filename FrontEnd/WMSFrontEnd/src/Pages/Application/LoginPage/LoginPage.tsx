@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { Box, Button, Container, Paper, TextField, Typography, } from "@mui/material";
 import { UseAppDispatch, UseAppSelector } from "../../../Stores/store";
 import { loginAsync } from "./AuthSlice";
+import { router } from "../../../Routers/AppRouter";
+import { Router } from "react-router";
 
 
  
@@ -14,7 +16,10 @@ export default function LoginPage() {
     const auth = UseAppSelector((state) => state.auth);
   
     const onSubmit = (data: LoginRequest) => {
-      let response = dispatch(loginAsync(data)).unwrap();;
+    
+      let response = dispatch(loginAsync(data)).unwrap();
+      router.navigate("/admin/dashboard")
+
     };
 
   return (
