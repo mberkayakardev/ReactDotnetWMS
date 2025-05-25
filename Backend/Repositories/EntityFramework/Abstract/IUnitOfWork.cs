@@ -8,8 +8,8 @@ namespace QuizApp.Repositories.EntityFramework.Abstract
     {
         #region Costume Repositories
         IAppUserRepositories AppUserRepositories { get; }
-
         IProductRepository ProductRepository { get; }
+        IAppReactMenus AppReactMenus { get; }
         #endregion
         int SaveChanges();
         Task<int> SaveChangesAsync();

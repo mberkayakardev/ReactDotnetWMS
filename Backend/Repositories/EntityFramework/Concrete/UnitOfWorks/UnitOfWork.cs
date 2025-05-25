@@ -15,8 +15,10 @@ namespace QuizApp.Repositories.EntityFramework.Concrete.UnitOfWorks
         #region Costume Repositories
         public IAppUserRepositories AppUserRepositories => new EfAppUserRepositories(_quizContext);
         public IProductRepository ProductRepository => new EFProductRepository(_quizContext);
+        public IAppReactMenus AppReactMenus => new EfAppReactMenus(_quizContext);
+
         #endregion
-        
+
         public UnitOfWork(AppDbContext quizContext)
         {
             _quizContext = quizContext;

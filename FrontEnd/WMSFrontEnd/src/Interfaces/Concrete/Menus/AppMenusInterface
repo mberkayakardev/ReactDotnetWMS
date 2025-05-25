@@ -1,0 +1,20 @@
+export interface AppReactMenuItem {
+  id: number;
+  isActive: boolean;
+  createdDate: string | null;
+  modifiedDate: string | null;
+  createdUserId: number | null;
+  createdUserName: string | null;
+  modifiedUserId: number | null;
+  modifiedUserName: string | null;
+  menuName: string;
+  menuDescription: string;
+  appClaimId: number;
+  appApplicationTypeId: number;
+  rootId: number | null;
+  menuOrderNumber: number;
+  menuTextName: string;
+  menuTo: string;
+  parentMenu: AppReactMenuItem | null;
+  childMenus: AppReactMenuItem[];
+}

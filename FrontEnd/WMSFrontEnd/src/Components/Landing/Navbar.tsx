@@ -21,12 +21,13 @@ const navStyles = {
 }
 
 export default function ButtonAppBar() {
-
-
-    const user = UseAppSelector((state) => state.auth.user);
+  
+  const user = UseAppSelector((state) => state.auth.user);
 
   return (
- <AppBar position="static" color="primary">
+
+  <AppBar position="static" color="primary">
+    
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
         
         <Typography variant="h6" component={NavLink}   to="/" sx={{textDecoration:"none", color:"white"}}> Akar WMS </Typography>
@@ -47,5 +48,6 @@ export default function ButtonAppBar() {
 
       </Toolbar>
     </AppBar>
+
   );
 }

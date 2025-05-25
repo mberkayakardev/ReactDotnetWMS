@@ -7,7 +7,7 @@ using TrendMusic.ECommerce.Core.Utilities.Results.BaseResult;
 
 namespace WebApi.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class MenusController : CostumeApiController
     {
         private readonly IMenuService _MenuService;
@@ -22,6 +22,13 @@ namespace WebApi.Controllers
         public async Task<IActionResult> Index(int UserId)
         {
             return ActionResultInstance(await _MenuService.GetAppMVCMenusForUser(UserId));
+        }
+
+
+        [HttpGet("React/{UserId}")]
+        public async Task<IActionResult> ReactMenusForUser(int UserId)
+        {
+            return ActionResultInstance(await _MenuService.GetAppReactMenusForUser(UserId));
         }
     }
 }

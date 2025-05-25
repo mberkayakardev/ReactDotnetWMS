@@ -10,5 +10,6 @@ export default function RequireAuth() {
     return <Navigate to="/login" replace />;
   }
 
+
   return <Outlet />;
 }

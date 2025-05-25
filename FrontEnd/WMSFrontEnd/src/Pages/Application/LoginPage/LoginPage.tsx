@@ -15,10 +15,16 @@ export default function LoginPage() {
     const dispatch = UseAppDispatch();
     const auth = UseAppSelector((state) => state.auth);
   
-    const onSubmit = (data: LoginRequest) => {
+    const onSubmit = async  (data: LoginRequest) => {
     
-      let response = dispatch(loginAsync(data)).unwrap();
-      router.navigate("/admin/dashboard")
+      let response = await  dispatch(loginAsync(data)).unwrap();
+
+      console.log(auth)
+
+      if (auth.error === null )
+        {
+          router.navigate("/admin/dashboard");
+        }
 
     };
 

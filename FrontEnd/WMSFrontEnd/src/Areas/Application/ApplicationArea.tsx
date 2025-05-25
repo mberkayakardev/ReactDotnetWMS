@@ -1,19 +1,21 @@
-import { Outlet, useNavigate } from 'react-router'
-import './ApplicationArea.css'
-import { CssBaseline, styled, useTheme, type CSSObject, type Theme } from '@mui/material'
+import { Outlet, useNavigate } from 'react-router';
+import './ApplicationArea.css';
 import {
+  CssBaseline, styled, useTheme, type CSSObject, type Theme,
   Box, AppBar as MuiAppBar, Toolbar, Typography, Divider,
   IconButton, Drawer as MuiDrawer, List, ListItem, ListItemButton,
-  ListItemIcon, ListItemText
+  ListItemIcon, ListItemText, Collapse
 } from '@mui/material';
 
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import React from 'react';
-
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import React, { useEffect, useState } from 'react';
+import { UseAppDispatch, UseAppSelector } from '../../Stores/store';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import { fetchUserMenus } from '../../Pages/Application/UserPages/AuthSlice'; // Menü slice yolu
 
 const drawerWidth = 240;
 
@@ -50,7 +52,6 @@ interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
 }
 
-
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })<AppBarProps>(({ theme, open }) => ({
@@ -86,26 +87,75 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   })
 );
 
-
-
 export default function ApplicationArea() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const dispatch = UseAppDispatch();
+  const [expandedMenus, setExpandedMenus] = useState<{ [key: number]: boolean }>({});
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
+  const { menus: menuItems = [], loading, error } = UseAppSelector((state) => state.menu);
+  const auth = UseAppSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (auth?.user?.id) {
+      dispatch(fetchUserMenus(auth.user.id));
+    }
+  }, [dispatch, auth?.user?.id]);
+
+  const handleDrawerOpen = () => setOpen(true);
+  const handleDrawerClose = () => setOpen(false);
+
+
+    const toggleMenu = (id: number) => {
+    setExpandedMenus((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
-  const menuItems = [
-    { text: 'Dashboard', icon: <InboxIcon />, path: '/admin/dashboard' },
-    { text: 'Kullanıcılar', icon: <MailIcon />, path: '/admin/users' },
-    { text: 'Ayarlar', icon: <InboxIcon />, path: '/admin/settings' },
-  ];
+ const renderMenuItems = (item: AppReactMenuItem, depth: number = 0) => {
+    const hasChildren = item.childMenus?.length > 0;
+    const isExpanded = expandedMenus[item.id] ?? false;
+
+    return (
+      <React.Fragment key={item.id}>
+        <ListItem disablePadding sx={{ display: 'block', pl: 2 * depth }}>
+          <ListItemButton
+            onClick={() => {
+              if (hasChildren) {
+                toggleMenu(item.id);
+              } else if (item.menuTo) {
+                navigate(item.menuTo);
+              }
+            }}
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary={item.menuTextName} sx={{ opacity: open ? 1 : 0 }} />
+            {hasChildren && (isExpanded ? <ExpandLess /> : <ExpandMore />)}
+          </ListItemButton>
+        </ListItem>
+        {hasChildren && (
+          <Collapse in={isExpanded} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {item.childMenus.map((child) => renderMenuItems(child, depth + 1))}
+            </List>
+          </Collapse>
+        )}
+      </React.Fragment>
+    );
+  };
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -133,34 +183,12 @@ export default function ApplicationArea() {
           </IconButton>
         </DrawerHeader>
         <Divider />
+        {loading && <Typography sx={{ px: 2, py: 1 }}>Menüler yükleniyor...</Typography>}
+        {error && <Typography color="error" sx={{ px: 2, py: 1 }}>Hata: {error}</Typography>}
         <List>
-          {menuItems.map((item, index) => (
-            <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                onClick={() => navigate(item.path)}
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {item.icon}
-                </ListItemIcon>
-                <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {menuItems.map((item) => renderMenuItems(item))}
         </List>
       </Drawer>
-
-      {/* Sayfa İçeriği - Outlet burada! */}
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Outlet />

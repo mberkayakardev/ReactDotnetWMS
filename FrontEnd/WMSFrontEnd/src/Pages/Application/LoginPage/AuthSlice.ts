@@ -34,14 +34,13 @@ export const loginAsync = createAsyncThunk(
         id: decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"],
         username: decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"],
         email: decoded.email
-      };
 
-      console.log(userverable)
+      };
 
       return userverable
     } 
     catch (error: any) {
-      return thunkAPI.rejectWithValue('Giriş başarısız')
+      return thunkAPI.rejectWithValue(error.data.messages)
     }
   }
 )
@@ -59,10 +58,11 @@ const authSlice = createSlice({
     builder
       .addCase(loginAsync.pending, (state) => {
         state.loading = true
-        state.error = null
+        state.error = null;
       })
       .addCase(loginAsync.fulfilled, (state, action) => {
         state.user = action.payload
+        state.error = null;
         state.loading = false
       })
       .addCase(loginAsync.rejected, (state, action) => {

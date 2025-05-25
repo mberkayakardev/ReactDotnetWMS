@@ -21,9 +21,7 @@ namespace Repositories.EntityFramework.Concrete.Seeds.AppEntities
                     RoleName = "Sistem Admin",
                     RoleDescription = "En yetkili kullanıcı"
 
-                }
-
-
+                } 
 
             );
         }

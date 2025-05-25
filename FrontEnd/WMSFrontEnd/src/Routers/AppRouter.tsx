@@ -13,8 +13,20 @@ import DashboardPage from "../Pages/Application/Dashboard/DashboardPage";
 import UserPages from "../Pages/Application/UserPages/UserPages";
 
 
+// Shared
+import ErrorPage from  "../Pages/Shared/ErrorPage";
+import NotFoundPage from "../Pages/Shared/NotFoundPage";
 
 export const router = createBrowserRouter([
+  {
+    path:"/error",
+    element: <ErrorPage/>
+  },
+    {
+    path:"*",
+    element: <NotFoundPage/>
+  },
+  
   {
     path: "/",
     element: <LandingArea/>,

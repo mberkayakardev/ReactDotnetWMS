@@ -39,6 +39,7 @@ namespace QuizApp.Repositories.EntityFramework.Concrete.Contexts
         public DbSet<AppUserRoles> AppUserRoles { get; set; }
         public DbSet<AppMVCMenus> AppMVCMenus { get; set; }
         public DbSet<AppApplicationType> AppApplicationType { get; set; }
+        public DbSet<AppReactMenus> AppReactMenus { get; set; }
         #endregion
 
         #region Survey Entitites
