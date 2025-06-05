@@ -11,6 +11,8 @@ import LoginPage from "../Pages/Application/LoginPage/LoginPage";
 import RequireAuth from "./RequireAuth";
 import DashboardPage from "../Pages/Application/Dashboard/DashboardPage";
 import UserPages from "../Pages/Application/UserPages/UserPages";
+import RollerPage from "../Pages/Application/Rollers/RollerPage";
+
 
 
 // Shared
@@ -60,6 +62,10 @@ export const router = createBrowserRouter([
              {
             path: "users", // yani /dashboard
             element: <UserPages />,
+          },
+                    {
+            path: "adminmodul/roller", // yani /dashboard
+            element: <RollerPage />,
           },
         ],
       },

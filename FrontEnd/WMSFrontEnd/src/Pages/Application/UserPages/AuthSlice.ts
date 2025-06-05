@@ -26,8 +26,6 @@ export const fetchUserMenus = createAsyncThunk<AppReactMenuItem[], number, { rej
   async (userId, thunkAPI) => {
     try {
       const response = await AuthService.getUserMenus(userId);
-      console.log('Menu Çekme ')
-      console.log(response)
       return response; // AppReactMenuItem[]
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error?.response?.data?.messages || 'Menüler alınamadı');
